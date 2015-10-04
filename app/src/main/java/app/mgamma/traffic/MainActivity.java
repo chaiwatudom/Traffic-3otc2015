@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private void createlistview() {
 
         //SetUp Title
-        String[] strTitle = new String[20];
+        final String[] strTitle = new String[20];
         strTitle[0] = "ห้ามเลี้ยวซ้าย";
         strTitle[1] = "ห้ามเลี้ยวขวา";
         strTitle[2] = "ตรงไป";
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         strTitle[19] = "จำกัดความสูง";
 
 
-        int[] intIcon = {R.drawable.traffic_01, R.drawable.traffic_02,
+        final int[] intIcon = {R.drawable.traffic_01, R.drawable.traffic_02,
                 R.drawable.traffic_03, R.drawable.traffic_04,
                 R.drawable.traffic_05, R.drawable.traffic_06,
                 R.drawable.traffic_07, R.drawable.traffic_08,
@@ -78,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
         trafficListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //Intent to DetailActivity
+                Intent objIntent = new Intent(MainActivity.this,DetailActivity.class);
+                objIntent.putExtra("Title", strTitle[i]);
+                objIntent.putExtra("Image", intIcon[i]);
+                objIntent.putExtra("index",i);
+                startActivity(objIntent);
 
             } //event
         });
